@@ -1,0 +1,36 @@
+{
+  "name": "nosql_task",
+  "version": "1.0.0",
+  "description": "Nosql task implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "test run",
+    "start": "supervisor index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vara855/nosql_simple.git"
+  },
+  "keywords": [
+    "nosql",
+    "mongodb",
+    "nodejs"
+  ],
+  "author": "Valerii Nosikov",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vara855/nosql_simple/issues"
+  },
+  "devDependencies": {
+    "eslint": "5.14.1",
+    "supervisor": "^0.12.0"
+  },
+  "dependencies": {
+    "boom": "^7.3.0",
+    "hapi": "^18.1.0",
+    "hapi-pino": "^5.4.1",
+    "lodash": "4.17.11",
+    "mongoose": "5.4.15"
+  },
+  "homepage": "https://github.com/vara855/nosql_simple#readme"
+}
