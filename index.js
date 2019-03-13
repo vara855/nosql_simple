@@ -1,10 +1,14 @@
-'use strict';
-
 const Hapi = require('hapi');
 const routes = require('./server/routes');
+const Path = require('path');
 const server = Hapi.server({
-  port: 3131,
-  host: 'localhost'
+  port: 5501,
+  host: 'localhost',
+  routes: {
+    files: {
+      relativeTo: Path.join(__dirname, 'public')
+    }
+  }
 });
 
 const init = async () => {

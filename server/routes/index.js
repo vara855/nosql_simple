@@ -1,5 +1,5 @@
-'use strict';
 const api = require('./api');
+const Path = require('path');
 const routes = [
   {
     method: 'GET',
@@ -12,7 +12,28 @@ const routes = [
     method: 'POST',
     path: '/api/register',
     options: api.user.register
+  },
+  {
+    method: 'POST',
+    path: '/api/login',
+    options: api.user.login
+  },
+  {
+    method: 'POST',
+    path: '/api/projects/create',
+    options: api.project.createProject
+  },
+  {
+    method: 'POST',
+    path: '/api/tickets/create',
+    options: api.ticket.createTicket
+  },
+  {
+    method: 'GET',
+    path: '/api/tickets/{id}',
+    options: api.ticket.remove
   }
-]
+
+];
 
 module.exports = routes;

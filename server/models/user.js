@@ -1,8 +1,6 @@
-'use strict';
-
-const mongoose = require('mongoose');
-
-const userSchema = mongoose.Schema(
+const { Schema, model } = require('mongoose');
+const { hashPassword } = require('../utils');
+const userSchema = Schema(
   {
     email: {
       type: String,
@@ -20,15 +18,18 @@ const userSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.pre('save', next => {
-  // const user = this;
-
+userSchema.pre('save', function (next) {
+  const user = this;
   if (!this.password) {
-    next();
+    return Promise.reject('Empty password')
   } else {
-    // TODO: hash password
-    next();
+    hashPassword(this.password)
+      .then(hash => {
+        user.password = hash;
+        next();
+      })
+      .catch(err => Promise.reject(err));
   }
-})
+});
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = model('User', userSchema);
