@@ -6,10 +6,14 @@ const jsonwebtoken = require('jsonwebtoken');
 const userApi = {
   register: {
     auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['access-control-allow-headers', 'access-control-allow-methods', 'access-control-allow-origin', 'x-requested-with']
+    },
     async handler(request, h) {
       try {
-        const { email, password } = request.payload;
-
+        let { email, password } = request.payload;
+        password = Buffer.from(password, 'base64').toString();
         const existsUser = await User.findOne({
           email
         });
@@ -19,6 +23,7 @@ const userApi = {
         }
 
         const user = new User({ email, password });
+        console.log('user :', user);
         await user.save();
 
         return 'Registration completed';
@@ -30,10 +35,14 @@ const userApi = {
   },
   login: {
     auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['access-control-allow-headers', 'access-control-allow-methods', 'access-control-allow-origin', 'x-requested-with']
+    },
     async handler(request, h) {
       try {
-        const { email, password } = request.payload;
-
+        let { email, password } = request.payload;
+        password = Buffer.from(password, 'base64').toString();
         const user = await User.findOne({ email });
 
         if (!user) {

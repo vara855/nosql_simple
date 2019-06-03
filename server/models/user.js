@@ -19,6 +19,7 @@ const userSchema = Schema(
 );
 
 userSchema.pre('save', function (next) {
+  console.log('this :', this);
   const user = this;
   if (!this.password) {
     return Promise.reject('Empty password')

@@ -18,6 +18,13 @@ const init = async () => {
     logEvents: ['response', 'onPostStart', 'request-error']
   })
 
+  await server.register({
+    plugin: require('hapi-cors'),
+    options: {
+      origins: ['http://localhost:5501', '*']
+    }
+  })
+
   routes.forEach(route => {
     server.route(route);
   })

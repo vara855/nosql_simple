@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 const outputDirectory = 'dist';
+
+const bourbon = require('bourbon');
 
 module.exports = {
   entry: ['babel-polyfill', './public/app.js'],
@@ -25,11 +26,22 @@ module.exports = {
     {
       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
       loader: 'url-loader?limit=100000'
-    }
+    },
+    {
+      test: /\.s(a|c)ss$/,
+      use: [
+        {
+          loader: 'style-loader'
+        },
+        {
+          loader: 'css-loader'
+        },
+        {
+          loader: 'sass-loader'
+        }
+      ]
+    },
     ]
-  },
-  resolve: {
-    extensions: ['*', '.js', '.jsx']
   },
   devServer: {
     port: 3030,
