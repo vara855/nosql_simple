@@ -21,6 +21,7 @@ export default class CreateTicket extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleUsersSelectChange = this.handleUsersSelectChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleMultiSelectChange = this.handleMultiSelectChange.bind(this);
     this.onDrop = this.onDrop.bind(this);
 
     this.state = {
