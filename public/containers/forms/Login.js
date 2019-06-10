@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RegistryNav from './ChangePages';
 import axios from 'axios';
+
 export default class Login extends Component {
 
   constructor(props) {
@@ -34,7 +35,10 @@ export default class Login extends Component {
     })
       .then(resp => {
         console.log('resp :', resp);
-        this.props.history.push('/projects');
+        const { token, user } = resp.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        this.props.history.push('/home');
       })
       .catch(err => {
         console.log('err :', err);
@@ -42,6 +46,9 @@ export default class Login extends Component {
   }
 
   render() {
+    if (localStorage.getItem('token')) {
+      this.props.history.push('/home');
+    }
     return (
       <div>
         <RegistryNav></RegistryNav>

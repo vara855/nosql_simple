@@ -4,17 +4,15 @@ import ReactDom from 'react-dom';
 import './styles/style.scss';
 import Login from './containers/forms/Login';
 import SignUp from './containers/forms/SignUp';
-import Projects from './containers/forms/Projects';
+import MainView from './containers/forms/MainView';
 
-
-  
 const App = () => {
   return (
     <Switch>
       <Route exact path='/' component={Login} />
       <Route path='/login' component={Login} />
       <Route path='/register' component={SignUp} />
-      <Route path='/projects' component={Projects} />
+      <Route path='/home' component={MainView} />
     </Switch>
   );
 }

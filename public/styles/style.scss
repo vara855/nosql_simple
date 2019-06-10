@@ -6,6 +6,17 @@ body {
   font-family: "Asap", sans-serif;
 }
 
+.spacer {
+  margin: 30px;
+}
+
+.dropzone {
+  background: #E3E9EE;
+  border-radius: 5px;
+  height: 25px;
+  padding-left: 10px;
+}
+
 .btn-group-head {
   &:after {
     content: "";
@@ -30,6 +41,46 @@ body {
   }
 }
 
+.cp-wrapper {
+ overflow: hidden;
+  background-color: white;
+  position: sticky;
+  left: 50%;
+  width: 100%;
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
+  -moz-transition: -moz-transform 300ms, box-shadow 300ms;
+  transition: transform 500ms, box-shadow 300ms;
+  box-shadow: 5px 10px 10px rgba(2, 128, 144, 0.2);
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 1100px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+  }
+  &::before {
+    left: 40%;
+    bottom: -130%;
+    background-color: rgba(69, 105, 144, 0.15);
+    -webkit-animation: wawes 30s infinite linear;
+    -moz-animation: wawes 30s infinite linear;
+    animation: wawes 30s infinite linear;
+  }
+  &::after {
+    left: 35%;
+    bottom: -125%;
+    background-color: rgba(2, 128, 144, 0.2);
+    -webkit-animation: wawes 30s infinite;
+    -moz-animation: wawes 30s infinite;
+    animation: wawes 30s infinite;
+  }
+}
 .login {
   overflow: hidden;
   background-color: white;

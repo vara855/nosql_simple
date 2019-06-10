@@ -68,6 +68,21 @@ const userApi = {
         return Boom.badRequest(err);
       }
     }
+  },
+  allUsers: {
+    auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['access-control-allow-headers', 'access-control-allow-methods', 'access-control-allow-origin', 'x-requested-with']
+    },
+    async handler(request, h) {
+      try {
+        const users = await User.find();
+        return users;
+      } catch (error) {
+        return Boom.badRequest(err);
+      }
+    }
   }
 }
 

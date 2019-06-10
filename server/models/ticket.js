@@ -4,7 +4,7 @@ const ticketSchema = Schema(
   {
     type: {
       type: String,
-      default: "task",
+      default: 'task',
       required: true
     },
     name: {
@@ -32,9 +32,9 @@ const ticketSchema = Schema(
       default: []
     },
     attachments: {
-      type: Array,
+      type: Buffer,
       default: []
-    }
+    },
   },
   { timestamps: true }
 )

@@ -4,10 +4,14 @@ const { Ticket } = require('../../models');
 const ticketsApi = {
   createTicket: {
     auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['access-control-allow-headers', 'access-control-allow-methods', 'access-control-allow-origin', 'x-requested-with']
+    },
     async handler(request, h) {
       try {
         const { type, name, reporters, assigned, description, project, components, attachments } = request.payload;
-        const ticket = new Ticket({ name, type, project });
+        const ticket = new Ticket({ name, type, project, reporters, assigned, description, components, attachments });
 
         await ticket.save();
         // return `${type} - ${title}, was created`
@@ -16,12 +20,17 @@ const ticketsApi = {
           _id: ticket._id
         };
       } catch (err) {
+        console.log('err :', err);
         return Boom.badRequest(err);
       }
     }
   },
   remove: {
     auth: false,
+    cors: {
+      origin: ['*'],
+      additionalHeaders: ['access-control-allow-headers', 'access-control-allow-methods', 'access-control-allow-origin', 'x-requested-with']
+    },
     async handler(request, h) {
       try {
         const { _id } = request.params;

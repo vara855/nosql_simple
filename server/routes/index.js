@@ -19,6 +19,16 @@ const routes = [
     options: api.user.login
   },
   {
+    method: 'GET',
+    path: '/api/users',
+    options: api.user.allUsers
+  },
+  {
+    method: 'GET',
+    path: '/api/projects',
+    options: api.project.allProjects
+  },
+  {
     method: 'POST',
     path: '/api/projects/create',
     options: api.project.createProject

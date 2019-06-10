@@ -9,11 +9,13 @@ const projectSchema = Schema(
     },
     tickets: {
       //TODO: describe Map <ticketId, ticketTitle>;
-      type: Map
+      type: Array,
+      default: []
     },
     participants: {
       //TODO: describe Map <userId, email>;
-      type: Map
+      type: Array,
+      default: []
     },
     desctiption: {
       type: String,
@@ -24,11 +26,11 @@ const projectSchema = Schema(
       default: []
     },
     updatedBy: {
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true
     },
     owner: {
-      type: String,
+      type: Schema.Types.ObjectId,
     }
   },
   { timestamps: true }
